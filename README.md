@@ -49,3 +49,14 @@ Example of ASCII art pasted directly from Ascii Flow. These examples were modifi
 │                             │
 │                             │
 └─────────────────────────────┘
+
+Process --- 
+
+In order to make this, I started simply. I initially tried just printing one figure; the mouse. After working for an hour on that, I finally got it print in the terminal. I then repeated this process with the fish, and in the end, managed to combine them into a random printing of fish or mouse on top of each other. What this lacked was movmeent across the terminal which was very difficult. 
+
+In order to do that, I had to start simply as well; breaking the project down. I started by trying to print just random string of periods across the terminal. I used a 1D array to achieve this, and using a while loop, printed an infinite loop of random periods. 
+After doing that, I started working with the ASCII's but this was extremely difficult. I ended up switching my idea, and instead of printing one row, I printed a 2D array of [width][60], where 60 was just an arbitrary "frame". This 2D array would then be looped over and over again to create the loop. However, this makes it look very choppy and not smooth, which is something I would adress given more time. 
+
+
+Submission to ASCII --
+I have submitted the ASCII of my mouse to the ASCII collection and am pending approval by their admins. 
