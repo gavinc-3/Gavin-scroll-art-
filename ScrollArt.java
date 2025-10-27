@@ -4,54 +4,51 @@ public class ScrollArt {
 
 
     public static void main(String[] args) throws InterruptedException {
-
         int screenWidth = getTerminalWidth(); 
         int heightterminal = 60;
         char[][] screen = new char[screenWidth][heightterminal];
 
         Random random = new Random();
 
-        char[][] mouseArt = getMouse();
-        char[][] fishArt = getFish();
+        AsciiArt mouseArt = new AsciiArt(getMouse());
+        AsciiArt fishArt = new AsciiArt(getFish());
 
         while (true) {
-
-            // clear screen
             for (int x = 0; x < screen.length; x++) {
                 for (int y = 0; y < screen[x].length; y++) {
                     screen[x][y] = ' ';
                 }
             }
+            char[][] mouseImg = mouseArt.getImg();
+            char[][] fishImg = fishArt.getImg();
 
-            // variables to determine position of fish and mouse in relation to the screen
-            int mousew = mouseArt.length; 
-            int mouseh = mouseArt[0].length;
-            int fishw = fishArt.length;
-            int fishH = fishArt[0].length;
+            int mousew = mouseImg.length; 
+            int mouseh = mouseImg[0].length;
+            int fishw = fishImg.length;
+            int fishH = fishImg[0].length;
+
             int mousex = random.nextInt(screenWidth - mousew);
             int mousey = random.nextInt(heightterminal - mouseh);
             int fishx = random.nextInt(screenWidth - fishw);
             int fishy = random.nextInt(heightterminal - fishH);
 
-
-            // loop through the screen and fill in the values of the fish and mouse
+            // Loop through the screen and place the mouse and fish
             for (int x = 0; x < mousew; x++) {
                 for (int y = 0; y < mouseh; y++) {
-                    if (mouseArt[x][y] != ' ') {
-                        screen[mousex + x][mousey + y] = mouseArt[x][y];
+                    if (mouseImg[x][y] != ' ') {
+                        screen[mousex + x][mousey + y] = mouseImg[x][y];
                     }
                 }
             }
 
             for (int x = 0; x < fishw; x++) {
                 for (int y = 0; y < fishH; y++) {
-                    if (fishArt[x][y] != ' ') {
-                        screen[fishx + x][fishy + y] = fishArt[x][y];
+                    if (fishImg[x][y] != ' ') {
+                        screen[fishx + x][fishy + y] = fishImg[x][y];
                     }
                 }
             }
 
-            // print out screen
             for (int y = 0; y < screen[0].length; y++) {
                 for (int x = 0; x < screen.length; x++) {
                     System.out.print(screen[x][y]);
@@ -59,15 +56,15 @@ public class ScrollArt {
                 System.out.println();
             }
 
-            Thread.sleep(1000);
+            Thread.sleep(1000); // Pause before the next iteration
         }
     }
-
     
 static char[][] getMouse() {
         
     char[][] mouse = new char[34][19]; 
 
+    
             for (int y = 0; y < 19; y++) {
                 for (int x = 0; x < 34; x++) {
                     mouse[x][y] = ' '; 
